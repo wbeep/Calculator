@@ -1,5 +1,5 @@
 #pragma once
-void add_Onto(int& past, int& present, int& after, bool& Operate, std::string& setting)
+void add_Onto(long long& past, long long& present, long long& after, bool& Operate, std::string& setting)
 {
     if (setting == "+")
     {
@@ -13,7 +13,7 @@ void add_Onto(int& past, int& present, int& after, bool& Operate, std::string& s
     }
 }
 
-void subtract_From(int& past, int& present, int& after, bool& Operate, std::string& setting)
+void subtract_From(long long& past, long long& present, long long& after, bool& Operate, std::string& setting)
 {
     if (setting == "-")
     {
@@ -27,13 +27,13 @@ void subtract_From(int& past, int& present, int& after, bool& Operate, std::stri
     }
 }
 
-void multiply_By(int& past, int& present, int& after, bool& Operate, std::string& setting)
+void multiply_By(long long& past, long long& present, long long& after, bool& Operate, std::string& setting)
 {
     if (setting == "*")
     {
         std::cout << "Give another number to multiply by your previous result, " << past << ":" << std::endl;
         std::cin >> after;
-        present = past - after;
+        present = past * after;
         std::cout << present << std::endl;
         Operate = true;
         past = present;
@@ -41,7 +41,7 @@ void multiply_By(int& past, int& present, int& after, bool& Operate, std::string
     }
 }
 
-void divide_By(int& past, int& present, int& after, bool& Operate, std::string& setting)
+void divide_By(long long& past, long long& present, long long& after, bool& Operate, std::string& setting)
 {
     if (setting == "/")
     {
@@ -55,13 +55,13 @@ void divide_By(int& past, int& present, int& after, bool& Operate, std::string& 
     }
 }
 
-void modulus_By(int& past, int& present, int& after, bool& Operate, std::string& setting)
+void modulus_By(long long& past, long long& present, long long& after, bool& Operate, std::string& setting)
 {
     if (setting == "%")
     {
         std::cout << "Give another number to divide by your previous result, " << past << ":" << std::endl;
         std::cin >> after;
-        present = past / after;
+        present = past % after;
         std::cout << present << std::endl;
         Operate = true;
         past = present;
@@ -69,20 +69,34 @@ void modulus_By(int& past, int& present, int& after, bool& Operate, std::string&
     }
 }
 
-void first_Num_Prompt(int& first)
+void exponent_By(long long& past, long long& present, long long& after, bool& Operate, std::string& setting)
+{
+    if (setting == "^")
+    {
+        std::cout << "Give another number to exponent by your previous result, " << past << ":" << std::endl;
+        std::cin >> after;
+        present = pow(past,after);
+        std::cout << present << std::endl;
+        Operate = true;
+        past = present;
+        present = 0;
+    }
+}
+
+void first_Num_Prompt(long long& first)
 {
     std::cout << "Your First Number?" << std::endl; 
     std::cin >> first; 
     while (std::cin.fail())
     {
-        std::cout << "Input an integer only with no spaces or characters" << std::endl;
+        std::cout << "Input an long longeger only with no spaces or characters" << std::endl;
         std::cin.clear();
         std::cin.ignore(256, '\n');
         std::cin >> first;
     }
 }
 
-void second_Num_Prompt_add(int& second, int& first, int& past, bool& Operate, std::string setting)
+void second_Num_Prompt_add(long long& second, long long& first, long long& past, bool& Operate, std::string setting)
 {
     if (setting == "+")                        
     {
@@ -90,7 +104,7 @@ void second_Num_Prompt_add(int& second, int& first, int& past, bool& Operate, st
         std::cin >> second;
         while (std::cin.fail())
         {
-            std::cout << "Input an integer only with no spaces or characters" << std::endl;
+            std::cout << "Input an long longeger only with no spaces or characters" << std::endl;
             std::cin.clear();
             std::cin.ignore(256, '\n');
             std::cin >> second;
@@ -101,7 +115,7 @@ void second_Num_Prompt_add(int& second, int& first, int& past, bool& Operate, st
     }
 }
 
-void second_Num_Prompt_subtract(int& second, int& first, int& past, bool& Operate, std::string setting)
+void second_Num_Prompt_subtract(long long& second, long long& first, long long& past, bool& Operate, std::string setting)
 {
     if (setting == "-")
     {                     
@@ -109,7 +123,7 @@ void second_Num_Prompt_subtract(int& second, int& first, int& past, bool& Operat
         std::cin >> second;
         while (std::cin.fail())
         {
-            std::cout << "Input an integer only with no spaces or characters" << std::endl;
+            std::cout << "Input an long longeger only with no spaces or characters" << std::endl;
             std::cin.clear();
             std::cin.ignore(256, '\n');
             std::cin >> second;
@@ -120,7 +134,7 @@ void second_Num_Prompt_subtract(int& second, int& first, int& past, bool& Operat
     }
 }
 
-void second_Num_Prompt_multiply(int& second, int& first, int& past, bool& Operate, std::string setting)
+void second_Num_Prompt_multiply(long long& second, long long& first, long long& past, bool& Operate, std::string setting)
 {
     if (setting == "*")
     {
@@ -128,7 +142,7 @@ void second_Num_Prompt_multiply(int& second, int& first, int& past, bool& Operat
         std::cin >> second;
         while (std::cin.fail())
         {
-            std::cout << "Input an integer only with no spaces or characters" << std::endl;
+            std::cout << "Input an long longeger only with no spaces or characters" << std::endl;
             std::cin.clear();
             std::cin.ignore(256, '\n');
             std::cin >> second;
@@ -139,7 +153,7 @@ void second_Num_Prompt_multiply(int& second, int& first, int& past, bool& Operat
     }
 }
 
-void second_Num_Prompt_divide(int& second, int& first, int& past, bool& Operate, std::string setting)
+void second_Num_Prompt_divide(long long& second, long long& first, long long& past, bool& Operate, std::string setting)
 {
     if (setting == "/")
     {
@@ -147,7 +161,7 @@ void second_Num_Prompt_divide(int& second, int& first, int& past, bool& Operate,
         std::cin >> second;
         while (std::cin.fail())
         {
-            std::cout << "Input an integer only with no spaces or characters" << std::endl;
+            std::cout << "Input an long longeger only with no spaces or characters" << std::endl;
             std::cin.clear();
             std::cin.ignore(256, '\n');
             std::cin >> second;
@@ -158,7 +172,7 @@ void second_Num_Prompt_divide(int& second, int& first, int& past, bool& Operate,
     }
 }
 
-void second_Num_Prompt_modulus(int& second, int& first, int& past, bool& Operate, std::string &setting)
+void second_Num_Prompt_modulus(long long& second, long long& first, long long& past, bool& Operate, std::string &setting)
 {
     if (setting == "%")
     {
@@ -166,7 +180,7 @@ void second_Num_Prompt_modulus(int& second, int& first, int& past, bool& Operate
         std::cin >> second;
         while (std::cin.fail())
         {
-            std::cout << "Input an integer only with no spaces or characters" << std::endl;
+            std::cout << "Input an long longeger only with no spaces or characters" << std::endl;
             std::cin.clear();
             std::cin.ignore(256, '\n');
             std::cin >> second;
@@ -177,15 +191,34 @@ void second_Num_Prompt_modulus(int& second, int& first, int& past, bool& Operate
     }
 }
 
+void second_Num_Prompt_exponent(long long& second, long long& first, long long& past, bool& Operate, std::string setting)
+{
+    if (setting == "^")
+    {
+        std::cout << "Your Second Number?" << std::endl;
+        std::cin >> second;
+        while (std::cin.fail())
+        {
+            std::cout << "Input an long longeger only with no spaces or characters" << std::endl;
+            std::cin.clear();
+            std::cin.ignore(256, '\n');
+            std::cin >> second;
+        }
+        past = pow(first,second);
+        std::cout << past << std::endl;
+        Operate = true;
+    }
+}
+
 void operation_Setting_input(std::string &z)
 {
-    std::cout << "+ for add, - for subtract, * for multiply, / for divide, and % for modulus. Type one to choose operator" << std::endl;
+    std::cout << "+ for add, - for subtract, * for multiply, / for divide, % for modulus, and ^ for exponent Type one to choose operator" << std::endl;
     std::cin >> z;
-    if (z != "+" && z != "-" && z != "*" && z != "/" && z != "%")//checks for z and filters out unwanted/incorrect input
+    if (z != "+" && z != "-" && z != "*" && z != "/" && z != "%" && z != "^")//checks for z and filters out unwanted/incorrect input
     {
-        while (z != "+" && z != "-" && z != "*" && z != "/" && z != "%")
+        while (z != "+" && z != "-" && z != "*" && z != "/" && z != "%" && z != "^")
         {
-            std::cout << "Error, please input +, -, *, /, or %" << std::endl;
+            std::cout << "Error, please input +, -, *, /, %, or ^" << std::endl;
             std::cin >> z;
         }
     }
